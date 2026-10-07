@@ -7,6 +7,7 @@ class Player:
         self.id = id
         self.name = name.upper()
         self.hand = []
+        self.winner = False
         self.cards_played = 0
         self.cards_drawn = 0
         self.wilds_played = 0
@@ -19,7 +20,6 @@ class Player:
         self.blues_played = 0
         self.yellows_played = 0
         self.color_counts = {"red": 0, "green": 0, "blue": 0, "yellow": 0}
-        self.uno_stats = None
     
     def draw(self, deck: list[UnoCard]) -> UnoCard:
         c = random.choice(deck)

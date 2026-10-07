@@ -170,6 +170,7 @@ def play_uno(ctx: GameContext) -> None:
             if len(i.hand) == 0:
                 continueGame = False
                 winner_name = i.name
+                i.winner = True
                 currentPlayerIndex = 0
                 while True:
                     curr_player = players[currentPlayerIndex]
@@ -211,10 +212,7 @@ def play_uno(ctx: GameContext) -> None:
                 case "wild":
                     i.wilds_played += 1
                     new_color = cinput("Choose a color for the wild card (green, yellow, red, or blue)!").lower()
-                    while (new_color != "green" and  
-                           new_color != "red" and 
-                           new_color != "yellow" and 
-                           new_color != "blue"):
+                    while (new_color not in VALID_COLORS):
                         new_color = cinput("Choose a valid color please (green, yellow, red, or blue).")
                     new_card.color = new_color.lower()
                     i.color_count(new_card.color)

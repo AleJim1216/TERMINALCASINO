@@ -32,8 +32,9 @@ class UnoGameStats:
     player: Player
 
     @property
-    def most_common_color(self)-> str:
-        return max(self.player.color_counts, key=self.player.color_counts.get)
+    def most_common_color(self) -> str:
+        counts = self.player.color_counts
+        return max(counts, key=lambda color: counts[color])
 
 def display_stats(stats: GameStats | UnoGameStats, game_name: str = "poker", player: Player = None, rounds_played: int = 0) -> None:
     """Display a post-game session summary."""
